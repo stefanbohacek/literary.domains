@@ -56,6 +56,9 @@ export default (elementId) => {
     },
   });
 
+
+  searchInputEl.focus();
+
   input.addEventListener("awesomplete-selectcomplete", async (ev) => {
     searchHelpEl.innerHTML = "Extracting domains...";
     const fullTitle = ev.text.label;
