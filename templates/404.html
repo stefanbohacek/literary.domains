@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block styles %}
+body{
+	background-image: url("images/background/space-01.jpg");	
+}
+{% endblock %}
+
+
+{% block navigation %}
+<nav style="position: static;">
+	<ul class="pull-left">
+	<!-- The inline style here is used to fix an issue with FA icons not rending in Chrome (Linux) -->
+		<li class="nq-mobile"><a href="/" title="Get a new quote"><i class="fa fa-refresh"> </i></a></li>
+		<li class="nq"><a href="/" title="Get a new quote"><!--<i class="fa fa-refresh"> </i> -->New quote</a></li>
+		<li><a style="display: inline-block !important;" href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fwww.spaceandquotes.com%2F{{slug}}&text=Space%20and%20Quotes: http%3A%2F%2Fwww.spaceandquotes.com%2F{{slug}}&via=stefanbohacek" target="_blank" title="Tweet"><i style="display: inline-block !important;" class="fa fa-twitter"></i></a></li>
+		<li><a href="http://www.tumblr.com/share?v=3&u=http%3A%2F%2Fwww.spaceandquotes.com%2F{{slug}}&t=Space%20and%20Quotes&s=" target="_blank" title="Post to Tumblr"><i class="fa fa-tumblr"></i></a></li>
+		<li><a style="display: inline-block !important;" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.spaceandquotes.com%2F{{slug}}" target="_blank" title="Share on Facebook"><i class="fa fa-facebook" style="display: inline-block !important;"></i></a></li>
+	</ul>
+	<ul class="pull-right">
+		<li>by <a href="https://stefanbohacek.online/@stefan" title="Stefan Bohacek on Mastodon"><strong>@stefan</strong></a></li>
+		<li>|</li>
+		<li><a href="mailto:stefan@stefanbohacek.com" target="_blank" title="Send me an email"><i class="fa fa-envelope" style="display: inline-block !important;"></i></a></li>
+	</ul>
+</nav>
+{% endblock %}
+
+{% block error %}
+<section class="big">
+	<p>There are no quotes here.</p>
+</section>
+{% endblock %}

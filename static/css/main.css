@@ -1,0 +1,85 @@
+:root {
+  --bs-btn-color: red !important;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+}
+
+.hand-written {
+  display: inline-block;
+  transform: rotate(5deg);
+  font-family: "Single Day";
+  font-size: 3.3rem;
+  font-style: italic;
+}
+
+body[data-bs-theme="dark"] {
+  background-color: #232946;
+  color: #eebbc3;
+
+  & .alert-light {
+    background-color: #b8c1ec;
+    color: #232946;
+  }
+}
+
+footer,
+footer a {
+  background-color: #b8c1ec;
+  color: #232946 !important;
+}
+
+.btn:hover {
+  background-color: #232946;
+}
+
+.btn:active {
+  background-color: #232946 !important;
+}
+
+body[data-bs-theme="light"] {
+  background-color: #eebbc3;
+  color: #232946;
+}
+
+.auto-results-wrapper {
+  margin-top: -8px !important;
+  border: none !important;
+  max-height: 300px;
+  overflow-y: scroll;
+  position: relative !important;
+}
+
+.auto-results-wrapper li {
+  font-size: 1.2rem;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
+body[data-bs-theme="dark"] {
+  & .auto-results-wrapper.auto-is-active {
+    background-color: var(--bs-body-bg);
+  }
+
+  & .auto-selected {
+    background-color: #232946;
+  }
+}
+
+body[data-bs-theme="light"] {
+  & .auto-selected {
+    background-color: #b8c1ec;
+  }
+}
+
+body[data-bs-theme="light"] {
+  & .btn-light:hover {
+    color: #fff;
+  }
+}
+
+/* 
+.domain-check:hover{
+  outline: 2px solid black;
+} */

@@ -1,6 +1,2 @@
-.eggs
-Pipfile
-*.log
-public_domains.egg-info/
-dist
-build
+__pycache__
+data/

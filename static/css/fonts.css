@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Outfit";
+  /* font-display: swap; */
+  src: url("../fonts/outfit/Outfit-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Single Day";
+  /* font-display: swap; */
+  src: url("../fonts/single-day/SingleDay-Regular.ttf");
+}
