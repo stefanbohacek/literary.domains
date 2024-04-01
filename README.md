@@ -1,8 +1,12 @@
+![A screenshot of the website showing domain names generated from Jane Austen's Pride and Prejudice.](static/images/thumbnail-520x353.png)
+
 # Literary.Domains
 
-A simple website that can help inspire your next data collection and visualization project.
+Great domain name ideas from great literary work.
 
-Try it at [literary.domains](https://literary.domains/) and learn more about the project [on my blog](https://stefanbohacek.com/project/todo).
+Try it at [literary.domains](https://literary.domains/).
+
+<!-- and learn more about the project [on my blog](https://stefanbohacek.com/project/todo).-->
 
 ## Development
 
