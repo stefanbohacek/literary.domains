@@ -73,7 +73,7 @@ export default (elementId) => {
               (domain) => /* html */ `
             <li class="mt-2 mb-2">
               <span class="font-monospace me-3" tabindex="0">${domain}</span>
-              <button role="button" class="btn btn-light domain-check p-1" data-domain="${domain}" tabindex="0">Check availability</button>
+              <button role="button" class="d-block d-md-inline btn btn-light domain-check p-1" data-domain="${domain}" tabindex="0">Check availability</button>
             </li>
           `
             )
