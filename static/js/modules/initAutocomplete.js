@@ -45,7 +45,7 @@ document.querySelector("body").addEventListener(
 export default (elementId) => {
   const input = document.getElementById(elementId);
   const awesomplete = new Awesomplete(input, {
-    minChars: 4,
+    minChars: 6,
     // maxItems: 8,
     autoFirst: true,
     filter: function (text, input) {
@@ -97,10 +97,13 @@ export default (elementId) => {
     ) {
       return;
     } else {
-      clearTimeout(debounce);
-      debounce = setTimeout(() => {
-        getAutocomplete(awesomplete);
-      }, 350);
+      const inputValue = input.value.trim();
+      if ( inputValue && inputValue.length > 4 ){
+        clearTimeout(debounce);
+        debounce = setTimeout(() => {
+          getAutocomplete(awesomplete);
+        }, 1000);
+      }
     }
   });
 };
