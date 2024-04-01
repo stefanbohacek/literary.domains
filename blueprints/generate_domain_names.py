@@ -33,7 +33,7 @@ def generate_domain_names():
 
         os.remove(book_text_file_path)
     else:
-        # print("using existing file")
+        print("using existing file")
         with open(domains_file_path, "r") as domains_file:
             hosts = json.load(domains_file)
 
