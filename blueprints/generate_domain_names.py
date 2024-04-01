@@ -38,15 +38,6 @@ def generate_domain_names():
         with open(domains_file_path, "r") as domains_file:
             hosts = json.load(domains_file)
 
-    hosts = (host for host in hosts if host not in [
-        "gutenberg.electronic.work",
-        "gutenberg.electronic.works",
-        "project.gutenberg.name",
-        "project.gutenberg.website",
-        "project.gutenberg.work",
-        "project.gutenberg.works"
-    ])
-
     return jsonify(
         # hosts=list(hosts)
         list(hosts)
