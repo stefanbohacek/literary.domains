@@ -16,8 +16,8 @@ const getAutocomplete = async (awesomplete) => {
         value: `${result.title}`,
         label: `${result.title} by ${result.authors.join(", ")}`,
       }));
+      searchHelpEl.innerHTML = "";
     });
-  searchHelpEl.innerHTML = "";
 };
 
 document.querySelector("body").addEventListener(
