@@ -31,7 +31,7 @@
 	<link rel="stylesheet"
 		href="static/libs/bootstrap/5.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet"
-		href="static/libs/autocomplete/v2.0.1/css/autocomplete.min.css">
+		href="static/libs/awesomplete/v1.1.5/awesomplete.css">
 	<link rel="stylesheet"
 		href="static/css/styles.css">
 	<meta name="msapplication-TileColor"
@@ -55,7 +55,6 @@
 <body class="d-flex flex-column h-100">
 	<script>
 		const toggleDarkMode = (enabled) => {
-			console.log('toggleDarkMode', enabled);
 			if (enabled) {
 				document.body.setAttribute('data-bs-theme', 'dark');
 			} else {
@@ -82,27 +81,28 @@
 	<footer class="footer mt-auto py-3">
 		<div class="container">
 			<span>
-				Created by <a href="https://stefanbohacek.com">Stefan Bohacek</a> based on <a href="https://parkerhiggins.net/">Parker Higgins</a>' project <a href="https://github.com/thisisparker/public_domains">public_domains</a>.
+				Created by <a href="https://stefanbohacek.com">Stefan Bohacek</a> based on <a
+					href="https://parkerhiggins.net/">Parker Higgins</a>' project <a
+					href="https://github.com/thisisparker/public_domains">public_domains</a>.
 				<!-- <a href="https://stefanbohacek.com/project/literary-domains/">About the project.</a> -->
 				<a href="https://github.com/stefanbohacek/literary.domains">View source.</a>
 			</span>
 		</div>
 	</footer>
 	<script defer="defer"
-		src="static/libs/autocomplete/v2.0.1/js/autocomplete.min.js"></script>
+		src="static/libs/awesomplete/v1.1.5/awesomplete.min.js"></script>
 	<script type="module"
 		defer="defer"
 		src="static/js/main.js"></script>
 	<script>
 		var _paq = window._paq = window._paq || [];
-		/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
 		_paq.push(["setExcludedQueryParams", ["token"]]);
 		_paq.push(['trackPageView']);
 		_paq.push(['enableLinkTracking']);
 		(function () {
 			var u = "https://matomo.stefanbohacek.dev/";
 			_paq.push(['setTrackerUrl', u + 'matomo.php']);
-			_paq.push(['setSiteId', '18']);
+			_paq.push(['setSiteId', '21']);
 			var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
 			g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
 		})();

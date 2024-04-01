@@ -85,8 +85,37 @@ body[data-bs-theme="dark"] {
   }
 }
 
+.awesomplete {
+  display: block;
+}
 
-/* 
-.domain-check:hover{
-  outline: 2px solid black;
-} */
+.awesomplete {
+  /* width: calc(100% - 10rem) !important; */
+}
+
+.input-group div.awesomplete {
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: calc(100% - 10rem) !important;
+  margin-bottom: 0;
+}
+
+.input-group div.awesomplete > input {
+  float: none;
+}
+
+.input-group div.awesomplete > ul {
+  z-index: 3;
+}
+
+body[data-bs-theme="dark"] {
+  & .awesomplete > ul {
+    background: #232946 !important;
+  }
+
+  & .awesomplete mark {
+    background: #b8c1ec !important;
+    color: black !important;
+  }
+}

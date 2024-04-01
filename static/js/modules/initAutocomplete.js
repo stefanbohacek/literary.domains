@@ -1,6 +1,24 @@
 import checkDomainAvailability from "./checkDomainAvailability.js";
 
 const domainsOutputEl = document.getElementById("domains");
+const searchInputEl = document.getElementById("books");
+const searchHelpEl = document.getElementById("search-help");
+
+const getAutocomplete = async (awesomplete) => {
+  searchHelpEl.innerHTML = "Searching...";
+  const murl = `/search-gutenberg?query=${encodeURI(searchInputEl.value)}`;
+
+  fetch(murl)
+    .then((r) => r.json())
+    .then((d) => {
+      awesomplete.list = d.results.map((result) => ({
+        // value: encodeURIComponent(`${result.title} ${result.authors.join(" ")}`),
+        value: `${result.title}`,
+        label: `${result.title} by ${result.authors.join(", ")}`,
+      }));
+    });
+  searchHelpEl.innerHTML = "";
+};
 
 document.querySelector("body").addEventListener(
   "click",
@@ -11,7 +29,6 @@ document.querySelector("body").addEventListener(
       ev.target.innerHTML = "Checking...";
       const domain = ev.target.dataset.domain;
       const isDomainAvailable = await checkDomainAvailability(domain);
-      console.log("isDomainAvailable", domain, isDomainAvailable);
 
       if (isDomainAvailable) {
         ev.target.innerHTML = "Available";
@@ -26,47 +43,26 @@ document.querySelector("body").addEventListener(
 );
 
 export default (elementId) => {
-  new Autocomplete(elementId, {
-    clearButton: false,
-    onSearch: ({ currentValue }) => {
-      const api = `/search-gutenberg?query=${encodeURI(currentValue)}`;
-
-      return new Promise((resolve) => {
-        fetch(api)
-          .then((response) => response.json())
-          .then((data) => {
-            resolve(data);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      });
+  const input = document.getElementById(elementId);
+  const awesomplete = new Awesomplete(input, {
+    minChars: 4,
+    // maxItems: 8,
+    autoFirst: true,
+    filter: function (text, input) {
+      return Awesomplete.FILTER_CONTAINS(text, input.match(/[^ ]*$/)[0]);
     },
-    onResults: ({ matches }) => {
-      return matches.results
-        .map((el) => {
-          return /* html */ `
-            <li data-full-title="${encodeURIComponent(
-              el.title + " " + el.authors.join(" ")
-            )}">
-              <strong>${el.title}</strong> by ${el.authors.join(", ")}
-            </li>
-          `;
-        })
-        .join("");
+    item: function (text, input) {
+      return Awesomplete.ITEM(text, input.match(/[^ ]*$/)[0]);
     },
-    onSubmit: async ({ index, element, object, results }) => {
-      domainsOutputEl.innerHTML = "Searching text for domain names...";
+  });
 
-      const fullTitle =
-        results.getElementsByTagName("li")[index].dataset.fullTitle;
-      const resp = await fetch(`/generate-domain-names?book=${fullTitle}`);
-      const domains = await resp.json();
-
-      console.log("domains", domains);
-
-      if (domains?.length) {
-        domainsOutputEl.innerHTML = /* html */ `
+  input.addEventListener("awesomplete-selectcomplete", async (ev) => {
+    searchHelpEl.innerHTML = "Extracting domains...";
+    const fullTitle = ev.text.label;
+    const resp = await fetch(`/generate-domain-names?book=${fullTitle}`);
+    const domains = await resp.json();
+    if (domains?.length) {
+      domainsOutputEl.innerHTML = /* html */ `
           <ul class="fs-5">
           ${domains
             .map(
@@ -80,10 +76,31 @@ export default (elementId) => {
             .join("")}
           </ul>
         `;
-      } else {
-        domainsOutputEl.innerHTML =
-          "No domain names found, please try another book.";
-      }
-    },
+    } else {
+      domainsOutputEl.innerHTML =
+        "No domain names found, please try another book.";
+    }
+    searchHelpEl.innerHTML = "";
+  });
+
+  let debounce;
+
+  input.addEventListener("keyup", (e) => {
+    var code = e.keyCode || e.which;
+    if (
+      code === 37 ||
+      code === 38 ||
+      code === 39 ||
+      code === 40 ||
+      code === 27 ||
+      code === 13
+    ) {
+      return;
+    } else {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => {
+        getAutocomplete(awesomplete);
+      }, 350);
+    }
   });
 };
