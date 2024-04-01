@@ -45,9 +45,9 @@ document.querySelector("body").addEventListener(
 export default (elementId) => {
   const input = document.getElementById(elementId);
   const awesomplete = new Awesomplete(input, {
-    minChars: 6,
+    minChars: 4,
     // maxItems: 8,
-    autoFirst: true,
+    // autoFirst: true,
     filter: function (text, input) {
       return Awesomplete.FILTER_CONTAINS(text, input.match(/[^ ]*$/)[0]);
     },
@@ -55,7 +55,6 @@ export default (elementId) => {
       return Awesomplete.ITEM(text, input.match(/[^ ]*$/)[0]);
     },
   });
-
 
   searchInputEl.focus();
 
