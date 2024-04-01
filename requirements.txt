@@ -1,3 +1,4 @@
-Flask==2.2.5
-Flask_Caching==2.1.0
-public_domains==0.0.6
+Flask>=2.2.5
+Flask-Caching>=2.1.0
+public_domains>=0.0.8
+gutenberg-cleaner

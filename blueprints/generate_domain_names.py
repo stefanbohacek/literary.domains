@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 import json
 from flask import Blueprint, request, jsonify
+from gutenberg_cleaner import simple_cleaner
 import public_domains
 
 generate_domain_names_blueprint = Blueprint('generate_domain_names_blueprint', __name__)
@@ -22,7 +23,7 @@ def generate_domain_names():
             print("downloading book file...")
             with open(book_text_file_path, "w") as book_text_file:
                 if (book_text):
-                    book_text_file.write(book_text)
+                    book_text_file.write(simple_cleaner(book_text))
 
         print("generating hosts...")
         hosts = public_domains.get_hosts(book_text_file_path, quiet=True)
