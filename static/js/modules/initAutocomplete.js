@@ -9,7 +9,6 @@ document.querySelector("body").addEventListener(
       ev.target.disabled = true;
       ev.target.classList.remove("domain-check");
       ev.target.innerHTML = "Checking...";
-      ev.target.blur();
       const domain = ev.target.dataset.domain;
       const isDomainAvailable = await checkDomainAvailability(domain);
       console.log("isDomainAvailable", domain, isDomainAvailable);

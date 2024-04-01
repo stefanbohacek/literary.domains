@@ -79,6 +79,13 @@ body[data-bs-theme="light"] {
   }
 }
 
+body[data-bs-theme="dark"] {
+  & .btn-light:active {
+    color: #fff;
+  }
+}
+
+
 /* 
 .domain-check:hover{
   outline: 2px solid black;
