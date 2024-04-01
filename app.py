@@ -1,6 +1,7 @@
 # Import dependencies
 
 from flask import Flask
+from cache import cache
 
 # Import blueprints
 
@@ -14,6 +15,7 @@ from blueprints.search_gutenberg import search_gutenberg_blueprint
 # Set up main app
 
 app = Flask(__name__)
+cache.init_app(app)
 
 # Register endpoints
 
