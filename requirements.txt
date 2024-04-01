@@ -1,4 +1,3 @@
 Flask==2.2.5
-Jinja2==3.0.3
-public-domains==0.0.6
-flask-caching==2.1.1
+Flask_Caching==2.1.0
+public_domains==0.0.6
